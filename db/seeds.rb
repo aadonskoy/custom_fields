@@ -35,7 +35,7 @@ user = tenant.users.first
 user.update(age: 38, about: "Something interesting here", roles: "user", skills: %w[writing reading])
 user = tenant.users.second
 user.update(age: 24, about: "Like to code", roles: "admin", skills: %w[coding])
-user = tenant.users.second
+user = tenant.users.third
 user.update(age: 42, about: "Like coding writing reading", roles: "superadmin", skills: %w[writing coding reading])
 
 

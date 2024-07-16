@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_16_083407) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_16_200658) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,13 +27,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_083407) do
 
   create_table "field_values", force: :cascade do |t|
     t.bigint "field_template_id", null: false
-    t.bigint "user_id", null: false
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type"
+    t.string "customable_type"
+    t.bigint "customable_id"
+    t.index ["customable_type", "customable_id"], name: "index_field_values_on_customable"
     t.index ["field_template_id"], name: "index_field_values_on_field_template_id"
-    t.index ["user_id"], name: "index_field_values_on_user_id"
   end
 
   create_table "tenants", force: :cascade do |t|
@@ -52,6 +53,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_16_083407) do
 
   add_foreign_key "field_templates", "tenants"
   add_foreign_key "field_values", "field_templates"
-  add_foreign_key "field_values", "users"
   add_foreign_key "users", "tenants"
 end
