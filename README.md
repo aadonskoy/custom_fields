@@ -1,7 +1,7 @@
 # README
 
 This is a simple service that demonstrates how to implement custom fields configurable per tenant.
-The FieldVaule model is used to store the custom fields for each user in scope of tenant.
+The FieldValue model is used to store the custom fields for each user in scope of tenant.
 The FieldValue model has a polymorphic association with the User model and can be associated with other models (and `Customable` concern should be included as well).
 
 ## How to add a new field for a tenant
